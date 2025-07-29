@@ -2,9 +2,27 @@
 
 namespace App\Models;
 
+use App\Models\User;
+use App\Models\Service;
 use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model
 {
-    //
+    protected $fillable = [
+        'user_id',
+        'service_id',
+        'booking_date',
+        'status',
+    ];
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
+    }
 }
