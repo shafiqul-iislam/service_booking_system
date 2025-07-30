@@ -2,7 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\Booking\BookingController;
+use App\Http\Controllers\Api\Service\ServiceController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -13,3 +15,13 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 
+// services list for customers
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/services', [ServiceController::class, 'index']);
+});
+
+// bookings for customers
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/bookings', [BookingController::class, 'index']);
+    Route::post('/bookings', [BookingController::class, 'store']);
+});

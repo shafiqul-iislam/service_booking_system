@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->float('price');
-            $table->integer('status')->default(0);
+            $table->integer('status')->default(0); // 0: Inactive, 1: Active
             $table->timestamps();
         });
     }

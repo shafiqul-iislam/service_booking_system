@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->foreignId('service_id');
             $table->timestamp('booking_date');
-            $table->integer('status')->default(0);
+            $table->integer('status')->default(0); // 0: Pending, 1: Accepted, 2: Declined
             $table->timestamps();
         });
     }
