@@ -43,4 +43,20 @@ class AuthController extends Controller
 
         return response()->json(['token' => $token]);
     }
+
+
+    public function adminLogin(Request $request)
+    {
+        $admin = User::where('email', $request->email)
+            ->where('is_admin', true)
+            ->first();
+
+        if (!$admin || !Hash::check($request->password, $admin->password)) {
+            return response()->json(['message' => 'Unauthorized'], 401);
+        }
+
+        $token = $admin->createToken('admin-token')->plainTextToken;
+
+        return response()->json(['admin_token' => $token]);
+    }
 }

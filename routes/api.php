@@ -10,12 +10,11 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-// public routes for customers
+
+########### customers routes ###############
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
-
-// services list for customers
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/services', [ServiceController::class, 'index']);
 });
@@ -25,3 +24,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/bookings', [BookingController::class, 'index']);
     Route::post('/bookings', [BookingController::class, 'store']);
 });
+
+
+
+############ Admin routes #################
+Route::post('/admin-login', [AuthController::class, 'adminLogin']);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/service', [ServiceController::class, 'store']);
+});
+
+
