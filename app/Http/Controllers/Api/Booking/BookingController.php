@@ -32,7 +32,17 @@ class BookingController extends Controller
 
         return response()->json([
             'message' => 'Booking successful',
-            'booking' => $booking 
+            'booking' => $booking
         ], 201);
+    }
+
+    // for admin
+    public function adminIndex()
+    {
+        $bookings = Booking::with('user', 'service')->latest()->get();
+
+        return response()->json([
+            'bookings' => $bookings
+        ]);
     }
 }
