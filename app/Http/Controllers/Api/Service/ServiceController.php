@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreServiceRequest;
 use App\Http\Requests\UpdateServiceRequest;
+use Illuminate\Support\Facades\Validator;
 
 class ServiceController extends Controller
 {
@@ -36,21 +37,22 @@ class ServiceController extends Controller
         ], 201);
     }
 
+
     public function update(UpdateServiceRequest $request, $id)
     {
+        $user = $request->user();
+
+        if (!$user->is_admin) {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+
         $service = Service::find($id);
 
         if (!$service) {
             return response()->json(['message' => 'Service not found'], 404);
         }
 
-        $validatedData = $request->validated();
-
-        if (empty($validatedData)) {
-            return response()->json(['message' => 'No valid fields provided for update'], 422);
-        }
-
-        $service->update($validatedData);
+        $service->update($request->validated());
 
         return response()->json([
             'message' => 'Service updated successfully',
