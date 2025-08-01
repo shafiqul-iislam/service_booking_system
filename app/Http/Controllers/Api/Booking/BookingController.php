@@ -29,11 +29,22 @@ class BookingController extends Controller
     public function store(StoreBookingRequest $request)
     {
         try {
+
+            $existingBooking = Booking::where('user_id', $request->user()->id)
+                ->where('service_id', $request->service_id)
+                ->first();
+
+            if ($existingBooking) {
+                return response()->json([
+                    'message' => 'You have already booked this service.'
+                ], 409); // 409 Conflict
+            }
+
             $booking = Booking::create([
                 'user_id' => $request->user()->id,
                 'service_id' => $request->service_id,
                 'booking_date' => $request->booking_date,
-                'status' => 0,
+                'status' => 1,
             ]);
 
             return response()->json([
