@@ -44,7 +44,7 @@ class AuthController extends Controller
         return response()->json(['token' => $token]);
     }
 
-
+    // admin login
     public function adminLogin(Request $request)
     {
         $admin = User::where('email', $request->email)

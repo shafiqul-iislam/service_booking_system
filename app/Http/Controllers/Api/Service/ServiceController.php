@@ -17,6 +17,7 @@ class ServiceController extends Controller
     ) {}
     public function index()
     {
+        // get all services for customers
         $services = $this->serviceServices->getServices();
 
         return response()->json([
@@ -47,7 +48,7 @@ class ServiceController extends Controller
         }
     }
 
-
+    // only admin can update services
     public function update(UpdateServiceRequest $request, $id)
     {
         $user = $request->user();
@@ -79,7 +80,7 @@ class ServiceController extends Controller
         ]);
     }
 
-
+    // only admin can delete services
     public function destroy($id)
     {
         $service = Service::find($id);

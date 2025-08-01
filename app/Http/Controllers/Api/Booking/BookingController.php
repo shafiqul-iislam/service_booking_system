@@ -13,6 +13,8 @@ class BookingController extends Controller
     public function __construct(
         private BookingService $bookingServices
     ) {}
+
+
     public function index(Request $request)
     {
         // customer's bookings
@@ -23,7 +25,7 @@ class BookingController extends Controller
         ]);
     }
 
-
+    // booking for customer
     public function store(StoreBookingRequest $request)
     {
         try {

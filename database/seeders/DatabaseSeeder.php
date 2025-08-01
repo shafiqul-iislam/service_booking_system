@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Database\Seeders\Admin\AdminUserSeeder;
 use Database\Seeders\Services\ServicesSeeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,14 +18,9 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(5)->create();
 
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-
-        // $this->call([
-        //     AdminUserSeeder::class,
-        //     ServicesSeeder::class,
-        // ]);
+        $this->call([
+            AdminUserSeeder::class,
+            ServicesSeeder::class,
+        ]);
     }
 }
