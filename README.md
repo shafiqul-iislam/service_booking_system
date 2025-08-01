@@ -1,6 +1,6 @@
 ## 🔌 API Testing Instructions
 
-## All code in the Main Branch
+### All code in the Main Branch
 
 ### Requirements
 - Laravel running locally (`php artisan serve`)
@@ -24,6 +24,7 @@
 
 ### Install dependencies
 - composer install
+- npm install & npm run build
 
 ### Copy .env file and configure database
 - cp .env.example .env
@@ -91,3 +92,31 @@ It includes:
 
 ```bash
 php artisan test
+
+
+
+## Screenshots
+
+### Customer Registation
+![Courses](public/screenshots/customer_registation.png)
+
+### Customer Login
+![Course Creation](public/screenshots/customer_login.png)
+
+### Customer Service List
+![Course Creation](public/screenshots/services_list.png)
+
+### Customer Booking Service
+![Course Creation](public/screenshots/add_booking.png)
+
+### Customer Booking List
+![Course Creation](public/screenshots/booking_list.png)
+
+### Admin Login
+![Course Creation](public/screenshots/admin_login.png)
+
+### Admin Create Service
+![Course Creation](public/screenshots/create_service.png)
+
+### Admin Update Service
+![Course Creation](public/screenshots/update_service.png)
