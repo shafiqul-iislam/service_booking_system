@@ -2,11 +2,6 @@
 
 ### All code in the Main Branch
 
-### Requirements
-- Laravel running locally (`php artisan serve`)
-- Database seeded with admin and services
-- Postman installed
-
 ## Requirements
 - PHP and Composer installed
 - Laravel project set up and running locally (`php artisan serve`)
